@@ -10,17 +10,18 @@ function createUser(e) {
     const password = document.getElementById("password").value;
 
     const obj = {
-        username,
-        email,
-        password
+        username: username,
+        email: email,
+        password: password
     }
 
     fetch("/api/user", {
         method: "POST",
+        body: JSON.stringify(obj),
         headers: {
             "Content-Type": "application/json"
         },
-        body: JSON.stringify(obj)
+        
     }).then(res => res.json())
     .then(data => {
         console.log(data);

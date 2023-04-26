@@ -48,6 +48,17 @@ router.get('/signup', (req, res) => {
   }
   res.render('signup');
 });
+router.post('/logout', (req, res) => {
+  console.log("logout route backend")
+  if (req.session.loggedIn) {
+    req.session.destroy(()=>{
+      res.status(204).end();
+    })
+    res.redirect('/');
+    return;
+  }
+  res.render('/');
+});
 module.exports = router;
 
 
