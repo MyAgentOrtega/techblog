@@ -13,7 +13,7 @@ This application allows users to publish articles, blog posts, thoughts and opin
 
 ### <u> Deployable Link: </u>
 
-https://drive.google.com/file/d/1Sf7ivfzjl6CYGzv_tZPirQu9zK3f60S3/view
+https://joeytechblogapp.herokuapp.com/
 
 ### <u> Support:  </u>
 
