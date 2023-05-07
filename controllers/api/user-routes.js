@@ -26,17 +26,20 @@ router.post("/", async (req, res) => {
 
 router.post("/login", async (req, res) => {
   try {
+    console.log("TESTING INSIDE LOGGING ROUTE");
     const user = await User.findOne({
       where: {
         username: req.body.username,
       },
     });
     if (!user) {
+      console.log("USER FAILED");
       res.status(400).json({ message: "No user with that username!" });
       return;
     }
     const validPassword = await user.checkPassword(req.body.password);
     if (!validPassword) {
+      console.log("password failed")
       res.status(400).json({ message: "Incorrect password!" });
       return;
     }
@@ -45,13 +48,17 @@ router.post("/login", async (req, res) => {
       req.session.username = user.username;
       req.session.loggedIn = true;
       res.json({ user: user, message: "You are now logged in!" });
+      console.log(req.session.loggedIn)
     });
-  } catch (err) {
+    
+  } catch (err) { console.log("Catch TEST53")
     res.status(400).json({ message: "no user account found" });
   }
 });
 
 router.post('/logout', (req, res) => {
+  console.log("test");
+  console.log(req.session.loggedIn)
     if (req.session.loggedIn) {
       req.session.destroy(() => {
         res.status(204).end();
