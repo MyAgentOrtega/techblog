@@ -1,8 +1,15 @@
 <h4>All posts here</h4>
 
 {{#each posts}}
-    <h1>
-        <a href="/post/{{id}}">{{title}}</a>
-        </h1>
-    <p>{{createdAt}}</p>
+<h1>
+    <a href="/post/{{id}}">{{title}}</a>
+</h1>
+<p>{{createdAt}}</p>
 {{/each}}
+<form id="new-post">
+    <input type="text" id="title" placeholder="title">
+    <input type="text" id="body" placeholder="body">
+    <input type="submit" value="Post">
+</form>
+
+<script src="js/new-post.js"></script>

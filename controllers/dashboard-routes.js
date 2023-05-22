@@ -3,13 +3,15 @@ const { Post } = require('../models/');
 const withAuth = require('../utils/auth');
 
 router.get('/', withAuth, async (req, res) => {
+    console.log("dashboard")
     try {
         const postData = await Post.findAll({
             where: {
-                user_id: req.session.user_id,
+                user_id: req.session.userId,
             },
         })
         const posts = postData.map((post) => post.get({ plain: true }));
+        console.log(posts)
         res.render('all-post-admin', {
             layout: 'dashboard',
             posts,
