@@ -47,14 +47,16 @@ router.delete("/:id", withAuth, async (req, res) => {
       const [affectedRows] = await Post.destroy( {
         where: {
           id: req.params.id,
-          user_id: req.session.user_id,
+          // user_id: req.session.user_id,
         },
       });
-      if (affectedRows > 0) {
+      console.log(affectedRows)
+      if (affectedRows) {
         res.status(200).end;
       } else {
         res.status(404).end();
       }
+      // return res.status(200).json({message: "Post Deleted"})
     } catch (err) {
       res.status(500).json(err);
     }

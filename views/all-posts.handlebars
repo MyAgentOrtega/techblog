@@ -3,6 +3,7 @@
 {{#each posts}}
 <h1>
     <a href="/post/{{id}}">{{title}}</a>
+    <button class = "updateButton" data-postId="{{id}}"> Update </button> <button class = "deleteButton" data-postId="{{id}}"> Delete </button>
 </h1>
 <p>{{createdAt}}</p>
 {{/each}}
